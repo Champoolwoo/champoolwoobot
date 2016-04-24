@@ -31,7 +31,7 @@ app.post('/webhook/', function (req, res) {
      var sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200))
     }
   }
-  res.sendStatus(200);
+  res.sendStatus(200)
 })
 
 function sendTextMessage(sender, text) {
@@ -48,11 +48,11 @@ function sendTextMessage(sender, text) {
     }
   }, function(error, response, body) {
     if (error) {
-      console.log('Error sending message: ', error);
+      console.log('Error sending message: ', error)
     } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
+      console.log('Error: ', response.body.error)
     }
-  });
+  })
 }
 
 app.set('port',(process.env.PORT || 5000))
