@@ -25,10 +25,10 @@ app.post('/webhook/', function (req, res) {
     var event = req.body.entry[0].messaging[i]
     var sender = event.sender.id
     if (event.message && event.message.text) {
-      var text = event.message.text
-      // Handle a text message from this sender
-      console.log(test)
-     var sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200))
+      	var text = event.message.text
+      	// Handle a text message from this sender
+    	console.log(test)
+    	// var sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200))
     }
   }
   res.sendStatus(200)
