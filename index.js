@@ -48,7 +48,7 @@ app.post('/webhook/', function (req, res) {
     if (event.message && event.message.text) {
       	var text = event.message.text
       	// Handle a text message from this sender
-    	console.log(test)
+    	console.log(text)
     	sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200))
     }
   }
@@ -60,5 +60,5 @@ app.post('/webhook/', function (req, res) {
 app.set('port',(process.env.PORT || 5000))
 
 app.listen(app.get('port'),function(){
-	console.log('Example app listening on port ' + app.get(' port ' + '!'))
+	console.log('Example app listening on port ' + app.get('port'))
 })
