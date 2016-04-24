@@ -50,7 +50,8 @@ app.post('/webhook/', function (req, res) {
       	// Handle a text message from this sender
     	console.log(text)
     	if(text === 'Hi' || text === 'hi'){
-    		sendTextMessage(sender, "Hi sir.")
+    		sendTextMessage(sender, "Hi,My nama is J.A.R.V.I.S.Can I help you?")
+    		GET "https://www.googleapis.com/youtube/v3/search"
     	}
     	// sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200))
     }
