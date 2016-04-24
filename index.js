@@ -51,9 +51,13 @@ app.post('/webhook/', function (req, res) {
     	console.log(text)
     	if(text === 'Hi' || text === 'hi'){
     		sendTextMessage(sender, "Hi,My nama is J.A.R.V.I.S.Can I help you?")
-    		GET "https://www.googleapis.com/youtube/v3/search"
+    		// https://www.facebook.com/Champoolwoobot/
     	}
-    	// sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200))
+    	if(text === 'angularbot' || text === 'AngularBot'){
+    		sendTextMessage(sender, "https://www.facebook.com/Champoolwoobot")
+    	}else{
+    		sendTextMessage(sender, "You send message : "+ text.substring(0, 200))
+    	}
     }
   }
   res.sendStatus(200)
