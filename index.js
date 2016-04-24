@@ -6,7 +6,7 @@ var request = require('request')
 var token = "CAAYKpqZBU37IBAPJDJPULaJYYjaIzPlCzTVoI5QKKAnrVtQGz3xx2sieqVtTT0FF4NVCDuzEoHo26mZBKM9Cr0qL9188QimP73m8KOW7pVkI1MJMJpWE4T7LtGwKa2YpZCgdP3e6YQEoOsL4zyD4V3voPoT5LpwZB0PdRgVYa2eSguJZCooODHAMgRn9UAMo8BUGYxMJc3gZDZD"
 
 function sendTextMessage(sender, text) {
- messageData = {
+ var messageData = {
     text:text
   }
   request({
@@ -49,7 +49,10 @@ app.post('/webhook/', function (req, res) {
       	var text = event.message.text
       	// Handle a text message from this sender
     	console.log(text)
-    	sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200))
+    	if(text === 'Hi' || text === 'hi'){
+    		sendTextMessage(sender, "Hi sir.")
+    	}
+    	// sendTextMessage(sender, "Text received, echo: "+ text.substring(0, 200))
     }
   }
   res.sendStatus(200)
