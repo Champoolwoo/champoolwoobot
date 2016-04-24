@@ -52,8 +52,7 @@ app.post('/webhook/', function (req, res) {
     	if(text === 'Hi' || text === 'hi'){
     		sendTextMessage(sender, "Hi,My nama is J.A.R.V.I.S.Can I help you?")
     		// https://www.facebook.com/Champoolwoobot/
-    	}
-    	if(text === 'angularbot' || text === 'AngularBot'){
+    	}else if(text === 'angularbot' || text === 'AngularBot'){
     		sendTextMessage(sender, "https://www.facebook.com/Champoolwoobot")
     	}else{
     		sendTextMessage(sender, "You send message : "+ text.substring(0, 200))
