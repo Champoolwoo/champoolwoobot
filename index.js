@@ -49,13 +49,15 @@ app.post('/webhook/', function (req, res) {
       	var text = event.message.text
       	// Handle a text message from this sender
     	console.log(text)
-    	if(text === 'Hi' || text === 'hi'){
-    		sendTextMessage(sender, "Hi,My nama is J.A.R.V.I.S.Can I help you?")
+    	if(text === 'สวัสดี'){
+    		sendTextMessage(sender, "สวัสดีครับ")
     		// https://www.facebook.com/Champoolwoobot/
     	}else if(text === 'angularbot' || text === 'AngularBot'){
     		sendTextMessage(sender, "https://www.facebook.com/Angularbot/")
+		}else if(text === 'angularbot' || text === 'AngularBot'){
+
     	}else{
-    		sendTextMessage(sender, "You send message : "+ text.substring(0, 200))
+    		sendTextMessage(sender, "คุณพูดว่า \""+ text.substring(0, 200)+"\" ใช่ไหมครับ")
     	}
     }
   }
