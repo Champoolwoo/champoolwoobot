@@ -46,8 +46,9 @@ app.post('/webhook/', function (req, res) {
     var event = req.body.entry[0].messaging[i]
     var sender = event.sender.id
     if (event.message && event.message.text) {
-      // ////////////////////////////////////////////////////////
       var text = event.message.text.split(' ')
+      // ////////////////////////////////////////////////////////
+      
       if (text[0] === 'sum') {
         var answer = parseInt(text[1], 0) + parseInt(text[2], 0)
         sendTextMessage(sender, 'คำตอบคือ ' + answer)
@@ -64,8 +65,7 @@ app.post('/webhook/', function (req, res) {
         answer = result / text.length
         sendTextMessage(sender, 'คำตอบคือ ' + answer)
       }
-
-    // ////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////
     }
   }
   res.sendStatus(200)
