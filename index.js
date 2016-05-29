@@ -52,13 +52,20 @@ app.post('/webhook/', function (req, res) {
       if(text[0] === 'sum'){
         var answer = parseInt(text[1], 0) + parseInt(text[2], 0)
         sendTextMessage(sender, "คำตอบคือ"+answer)
-      }else if(text[1] === 'max'){
+      }else if(text[0] === 'max'){
         answer = parseInt(text[1], 0) > parseInt(text[2], 0) ? parseInt(text[1], 0) : parseInt(text[2], 0)
         sendTextMessage(sender, "คำตอบคือ"+answer)
-      }else if(text[1] === 'min'){
+      }else if(text[0] === 'min'){
         answer = parseInt(text[1], 0) < parseInt(text[2], 0) ? parseInt(text[1], 0) : parseInt(text[2], 0)
         sendTextMessage(sender, "คำตอบคือ"+answer)
+      }elseif(text[0] === 'average') {
+            text.splice(0, 1)
+            var result = text.reduce((prev, curr) => prev + parseInt(curr, 0), 0)
+            console.log(result)
+            answer = result / text.length
+            sendTextMessage(sender, answer)
       }
+
     //////////////////////////////////////////////////////////
     }
   }
