@@ -48,24 +48,28 @@ app.post('/webhook/', function (req, res) {
     if (event.message && event.message.text) {
       var text = event.message.text.split(' ')
       // ////////////////////////////////////////////////////////
-      
+
       if (text[0] === 'sum') {
         var answer = parseInt(text[1], 0) + parseInt(text[2], 0)
         sendTextMessage(sender, 'คำตอบคือ ' + answer)
+        console.log(answer)
       }else if (text[0] === 'max') {
         answer = parseInt(text[1], 0) > parseInt(text[2], 0) ? parseInt(text[1], 0) : parseInt(text[2], 0)
         sendTextMessage(sender, 'คำตอบคือ ' + answer)
+        console.log(answer)
       }else if (text[0] === 'min') {
         answer = parseInt(text[1], 0) < parseInt(text[2], 0) ? parseInt(text[1], 0) : parseInt(text[2], 0)
         sendTextMessage(sender, 'คำตอบคือ ' + answer)
+        console.log(answer)
       }else if (text[0] === 'avg') {
         text.splice(0, 1)
         var result = text.reduce((prev, curr) => prev + parseInt(curr, 0), 0)
         console.log(result)
         answer = result / text.length
         sendTextMessage(sender, 'คำตอบคือ ' + answer)
+        console.log(answer)
       }
-    ///////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////
     }
   }
   res.sendStatus(200)
