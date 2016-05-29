@@ -66,15 +66,16 @@ app.post('/webhook/', function (req, res) {
 
 
     //////////////////////////////////////////////////////////
-      if(text === 'สวัสดี'){
-        sendTextMessage(sender, "สวัสดีครับ")
-        // https://www.facebook.com/Champoolwoobot/
-      }else if(text === 'angularbot' || text === 'AngularBot'){
-        sendTextMessage(sender, "https://www.facebook.com/Angularbot/")
-      }else if(text === 'angularbot' || text === 'AngularBot'){
-
-      }else{
-        sendTextMessage(sender, "คุณพูดว่า \""+ (num1.substring(0, 200)+num2.substring(0, 200))+"\" ใช่ไหมครับ")
+      var text = event.message.text.split(' ');
+      if(text[0] === 'sum'){
+        var answer = parseInt(text[1], 0) + parseInt(text[2], 0)
+        sendTextMessage(sender, "คำตอบคือ"+answer)
+      }else if(text[1] === 'max'){
+        answer = parseInt(text[1], 0) > parseInt(text[2], 0) ? parseInt(text[1], 0) : parseInt(text[2], 0)
+        sendTextMessage(sender, "คำตอบคือ"+answer)
+      }else if(text[1] === 'min'){
+        answer = parseInt(text[1], 0) < parseInt(text[2], 0) ? parseInt(text[1], 0) : parseInt(text[2], 0)
+        sendTextMessage(sender, "คำตอบคือ"+answer)
       }
     //////////////////////////////////////////////////////////
     }
