@@ -5,9 +5,11 @@ var request = require('request')
 
 var token = "CAAYKpqZBU37IBAPJDJPULaJYYjaIzPlCzTVoI5QKKAnrVtQGz3xx2sieqVtTT0FF4NVCDuzEoHo26mZBKM9Cr0qL9188QimP73m8KOW7pVkI1MJMJpWE4T7LtGwKa2YpZCgdP3e6YQEoOsL4zyD4V3voPoT5LpwZB0PdRgVYa2eSguJZCooODHAMgRn9UAMo8BUGYxMJc3gZDZD"
 
-function sendTextMessage(sender, text) {
+function sendTextMessage(sender, text, num1, num2) {///////////
  var messageData = {
-    text:text
+    text:text,
+    num1:num1,///////////
+    num2:num2////////////
   }
   request({
     url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -47,18 +49,34 @@ app.post('/webhook/', function (req, res) {
     var sender = event.sender.id
     if (event.message && event.message.text) {
       	var text = event.message.text
+        var num1 = event.message.text///////////
+        var num2 = event.message.text///////////
       	// Handle a text message from this sender
     	console.log(text)
-    	if(text === 'สวัสดี'){
-    		sendTextMessage(sender, "สวัสดีครับ")
-    		// https://www.facebook.com/Champoolwoobot/
-    	}else if(text === 'angularbot' || text === 'AngularBot'){
-    		sendTextMessage(sender, "https://www.facebook.com/Angularbot/")
-		}else if(text === 'angularbot' || text === 'AngularBot'){
+    // 	if(text === 'สวัสดี'){
+    // 		sendTextMessage(sender, "สวัสดีครับ")
+    // 		// https://www.facebook.com/Champoolwoobot/
+    // 	}else if(text === 'angularbot' || text === 'AngularBot'){
+    // 		sendTextMessage(sender, "https://www.facebook.com/Angularbot/")
+		  // }else if(text === 'angularbot' || text === 'AngularBot'){
 
-    	}else{
-    		sendTextMessage(sender, "คุณพูดว่า \""+ text.substring(0, 200)+"\" ใช่ไหมครับ")
-    	}
+    // 	}else{
+    // 		sendTextMessage(sender, "คุณพูดว่า \""+ text.substring(0, 200)+"\" ใช่ไหมครับ")
+    // 	}
+
+
+    //////////////////////////////////////////////////////////
+      if(text === 'สวัสดี'){
+        sendTextMessage(sender, "สวัสดีครับ")
+        // https://www.facebook.com/Champoolwoobot/
+      }else if(text === 'angularbot' || text === 'AngularBot'){
+        sendTextMessage(sender, "https://www.facebook.com/Angularbot/")
+      }else if(text === 'angularbot' || text === 'AngularBot'){
+
+      }else{
+        sendTextMessage(sender, "คุณพูดว่า \""+ (num1.substring(0, 200)+num2.substring(0, 200))+"\" ใช่ไหมครับ")
+      }
+    //////////////////////////////////////////////////////////
     }
   }
   res.sendStatus(200)
